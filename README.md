@@ -95,8 +95,13 @@ routes/
    cp .env.example .env
    php artisan key:generate
    ```
+   
+4. **Update Initial Data**
+   ```bash
+   php artisan update:dataset
+   ```
 
-4. **Configure environment variables**
+5. **Configure environment variables**
    Edit `.env` file with your settings:
    ```env
    APP_URL=http://localhost:8000
@@ -107,12 +112,12 @@ routes/
    DB_CONNECTION=sqlite
    ```
 
-5. **Start the development server**
+6. **Start the development server**
    ```bash
    php artisan serve
    ```
 
-6. **Access the application**
+7. **Access the application**
    - Web Interface: http://localhost:8000
    - API Base URL: http://localhost:8000/api
 
@@ -229,7 +234,7 @@ php artisan test
    composer install
    ```
 
-2. **Initial Data**
+2. **Update Initial Data**
    ```bash
    php artisan update:dataset
    ```
