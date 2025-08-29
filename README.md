@@ -21,6 +21,11 @@ The Leaked Email Checker is a security-focused web application that helps users 
 - **🎨 Modern UI**: Professional dark theme with responsive design
 - **⚡ Fast Performance**: Optimized codebase with service layer architecture
 
+### ✨ Related Repositories
+
+- **🌐 Chrome Extension**: <a href="https://github.com/ijlik/JD_011-AdiNugroho-LeakedEmailChecker">https://github.com/ijlik/JD_011-AdiNugroho-LeakedEmailChecker</a>
+- **🔌 REST API**: <a href="https://github.com/ijlik/JD_011-AdiNugroho-LeakedEmailChecker-Web">https://github.com/ijlik/JD_011-AdiNugroho-LeakedEmailChecker-Web</a>
+
 ## 🏗️ Architecture
 
 ### Service Layer
