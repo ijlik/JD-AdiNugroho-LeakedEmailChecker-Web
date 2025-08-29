@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\SearchEmailRequest;
 use Illuminate\Support\Facades\Http;
 
 class LandingController extends Controller
@@ -17,13 +17,11 @@ class LandingController extends Controller
         ]);
     }
 
-    public function search(Request $request)
+    public function search(SearchEmailRequest $request)
     {
-        $request->validate([
-            'email' => ['required', 'string']
-        ]);
         $found = $this->crawl($request['email']);
-        return view('welcome', [
+
+        return view('index', [
             'search' => true,
             'data' => $found['data'],
             'error' => $found['error'],
@@ -44,7 +42,7 @@ class LandingController extends Controller
 
         return [
             'error' => null,
-            'data' => $sites->whereIn('Name', collect($data)->pluck('Name')->toArray())->toArray()
+            'data' => $sites->whereIn('Name', collect($data)->pluck('Name')->toArray())->sortByDesc('BreachDate')->toArray()
         ];
     }
 
