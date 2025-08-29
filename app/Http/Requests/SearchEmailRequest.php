@@ -14,7 +14,16 @@ class SearchEmailRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'email' => ['required', 'string']
+            'email' => ['required', 'string', 'email', 'max:255']
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'Email address is required.',
+            'email.email' => 'Please provide a valid email address.',
+            'email.max' => 'Email address must not exceed 255 characters.',
         ];
     }
 }
