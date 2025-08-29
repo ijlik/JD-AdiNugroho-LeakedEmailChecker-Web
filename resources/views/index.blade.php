@@ -90,6 +90,18 @@
                                     class="las la-search la-24-black"></i></button>
                         </div>
                     </form><!-- .site-banner__search -->
+
+                    <!-- Chrome Extension Download Button -->
+                    @if(env('CHROME_EXTENSION_URL'))
+                        <div class="chrome-extension-download mt-8">
+                            <a href="{{ env('CHROME_EXTENSION_URL') }}" target="_blank" class="btn btn-chrome-extension">
+                                <i class="lab la-chrome"></i>
+                                <span>Download for Chrome</span>
+                                <small>Get the extension for quick email checking</small>
+                            </a>
+                        </div>
+                    @endif
+
                     @if($error)
                         <p class="site-banner__meta">
                             <span style="color: darkred">{{ $error }}</span>
