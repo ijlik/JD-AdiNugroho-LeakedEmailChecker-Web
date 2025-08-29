@@ -16,7 +16,7 @@ class EmailBreachService
     public function searchBreaches(string $email): array
     {
         $sites = $this->getBreachDatabase();
-        $filePath = storage_path(now()->format('Y-m') . '-leak-data.json');
+        $filePath = storage_path('app/public/'.now()->format('Y-m') . '-leak-data.json');
         $breachData = null;
         if (file_exists($filePath)) {
             $fileBreaches = collect(json_decode(file_get_contents($filePath), true))->where('email', $email)->first();
