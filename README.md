@@ -90,18 +90,13 @@ routes/
    composer install
    ```
 
-3. **Install Node dependencies**
-   ```bash
-   npm install
-   ```
-
-4. **Environment configuration**
+3. **Environment configuration**
    ```bash
    cp .env.example .env
    php artisan key:generate
    ```
 
-5. **Configure environment variables**
+4. **Configure environment variables**
    Edit `.env` file with your settings:
    ```env
    APP_URL=http://localhost:8000
@@ -112,18 +107,12 @@ routes/
    DB_CONNECTION=sqlite
    ```
 
-6. **Create database**
-   ```bash
-   touch database/database.sqlite
-   php artisan migrate
-   ```
-
-7. **Start the development server**
+5. **Start the development server**
    ```bash
    php artisan serve
    ```
 
-8. **Access the application**
+6. **Access the application**
    - Web Interface: http://localhost:8000
    - API Base URL: http://localhost:8000/api
 
