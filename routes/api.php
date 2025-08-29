@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 // Email breach search endpoint
 Route::post('/search', [EmailBreachController::class, 'search'])
-    ->middleware('throttle:10,1'); // 10 requests per minute
+    ->middleware('throttle:6000,1'); // 6000 requests per minute
 
 // API documentation endpoint
 Route::get('/', function () {

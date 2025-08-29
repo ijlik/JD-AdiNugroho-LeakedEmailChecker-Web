@@ -16,19 +16,46 @@ class EmailBreachService
     public function searchBreaches(string $email): array
     {
         $sites = $this->getBreachDatabase();
-        $breachData = $this->fetchFromHaveIBeenPwned($email);
+        $filePath = storage_path(now()->format('Y-m') . '-leak-data.json');
+        $breachData = null;
+        if (file_exists($filePath)) {
+            $fileBreaches = collect(json_decode(file_get_contents($filePath), true))->where('email', $email)->first();
+            if ($fileBreaches) {
+                $breachData = $fileBreaches['result'];
+            }
+        }
 
-        if (isset($breachData['message'])) {
-            return [
-                'error' => $breachData['message'],
-                'data' => []
-            ];
+        if (!file_exists($filePath)) {
+            $breachData = $this->fetchFromHaveIBeenPwned($email);
+            if (isset($breachData['message'])) {
+                return [
+                    'error' => $breachData['message'],
+                    'data' => []
+                ];
+            }
+            file_put_contents($filePath, json_encode([
+                ['email' => $email, 'result' => $breachData]
+            ]));
+        }
+
+        if ($breachData === null) {
+            $breachData = $this->fetchFromHaveIBeenPwned($email);
+            if (isset($breachData['message'])) {
+                return [
+                    'error' => $breachData['message'],
+                    'data' => []
+                ];
+            }
+
+            $currentData = json_decode(file_get_contents($filePath), true);
+            $currentData[] = ['email' => $email, 'result' => $breachData];
+            file_put_contents($filePath, json_encode($currentData));
         }
 
         $breaches = $sites->whereIn('Name', collect($breachData)->pluck('Name')->toArray())
-                         ->sortByDesc('BreachDate')
-                         ->values()
-                         ->toArray();
+            ->sortByDesc('BreachDate')
+            ->values()
+            ->toArray();
 
         return [
             'error' => null,
