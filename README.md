@@ -74,8 +74,6 @@ routes/
 ### Prerequisites
 - PHP 8.2 or higher
 - Composer
-- Node.js & NPM (for asset compilation)
-- SQLite (default) or MySQL/PostgreSQL
 
 ### Local Setup
 
@@ -190,8 +188,6 @@ curl -X POST http://localhost:8000/api/search \
 
 ### Rate Limiting
 - **Limit**: 10 requests per minute per IP address
-- **Headers**: Rate limit information is included in response headers
-- **Status Code**: 429 Too Many Requests when limit exceeded
 
 ## 🌐 Web Interface
 
@@ -217,13 +213,6 @@ The web interface provides a user-friendly way to check email addresses for brea
 1. Sign up at [HaveIBeenPwned](https://haveibeenpwned.com/API/Key)
 2. Get your API key
 3. Add it to your `.env` file as `HIBP_API`
-
-## 🧪 Testing
-
-Run the test suite:
-```bash
-php artisan test
-```
 
 ## 📦 Deployment
 
