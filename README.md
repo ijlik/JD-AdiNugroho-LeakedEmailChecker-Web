@@ -97,13 +97,8 @@ routes/
    touch database/database.sqlite
    php artisan migrate
    ```
-   
-4. **Update Initial Data**
-   ```bash
-   php artisan update:dataset
-   ```
 
-5. **Configure environment variables**
+4. **Configure environment variables**
    Edit `.env` file with your settings:
    ```env
    APP_URL=http://localhost:8000
@@ -112,6 +107,11 @@ routes/
    
    # Database (SQLite is default)
    DB_CONNECTION=sqlite
+   ```
+   
+5. **Update Initial Data**
+   ```bash
+   php artisan update:dataset
    ```
 
 6. **Start the development server**
